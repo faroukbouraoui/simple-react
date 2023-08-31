@@ -27,7 +27,7 @@ pipeline {
                 script {
                     // Transfer build artifacts using rsync over SSH
                     sshagent(['jenkins-ssh']) {
-                        sh "rsync -avz -e 'ssh -i ${SSH_KEY}' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
+                        sh "rsync -avz -e 'ssh -i /home/ec2-user/server-key.pem' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
                     }
                 }
             }
