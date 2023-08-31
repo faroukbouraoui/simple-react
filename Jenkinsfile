@@ -17,9 +17,8 @@ pipeline {
                     // Transfer build artifacts using rsync over SSH
                     sshagent(['jenkins-ssh']) {
                         
-                        //sh "rsync -avz -e 'ssh -i server-key.pem' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
-                        sh "whoami"
-                        sh "pwd"
+                        sh "rsync -avz -e 'ssh -i server-key.pem' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
+                        
                     }
 
                 }
