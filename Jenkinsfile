@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Define your SSH credentials here
-        SSH_KEY = credentials('server-key1')
+        SSH_KEY = credentials('server-key2')
         SSH_USER = 'ubuntu'
         REMOTE_HOST = '54.237.94.30'
         REMOTE_PATH = '/var/www/'
