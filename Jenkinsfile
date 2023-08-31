@@ -10,16 +10,26 @@ pipeline {
     }
     
     stages {
-         
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        
        
         stage('Deploy') {
             steps {
                 script {
                     // Transfer build artifacts using rsync over SSH
                     sshagent(['jenkins-ssh']) {
-                        sh "sudo cd /home/ec2-user"
-                        sh "sudo pwd"
-                        //sh "rsync -avz -e 'ssh -i server-key.pem' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
+                        
+                        sh "rsync -avz -e 'sudo ssh -i server-key.pem' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
                         
                     }
 
