@@ -12,13 +12,13 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                //sh 'npm install'
             }
         }
         
         stage('Build') {
             steps {
-                sh 'npm run build'
+              //  sh 'npm run build'
             }
         }
         
@@ -27,7 +27,7 @@ pipeline {
                 script {
                     // Transfer build artifacts using rsync over SSH
                     sshagent(['jenkins-ssh']) {
-                        sh "cd /var/lib/jenkins"
+                        sh "cd /var/lib/"
                         //sh "rsync -avz -e 'ssh -i server-key.pem' build/ ${SSH_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
                         sh "ls -la"
                     }
